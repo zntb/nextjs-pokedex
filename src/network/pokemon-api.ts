@@ -14,3 +14,7 @@ export async function getPokemonPage(page: number) {
 
   return response.data;
 }
+
+export async function setNickName(pokemon: Pokemon, nickName: string) {
+  return { ...pokemon, name: nickName };
+}

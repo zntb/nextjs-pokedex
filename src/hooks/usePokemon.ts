@@ -3,7 +3,7 @@ import * as PokemonApi from '@/network/pokemon-api';
 import { AxiosError } from 'axios';
 
 export default function usePokemon(name: string) {
-  const { data, error, isLoading } = useSWR(name, async () => {
+  const { data, error, isLoading, mutate } = useSWR(name, async () => {
     try {
       return await PokemonApi.getPokemon(name);
     } catch (error) {
@@ -19,5 +19,6 @@ export default function usePokemon(name: string) {
     pokemon: data,
     pokemonError: error,
     pokemonLoading: isLoading,
+    mutatePokemon: mutate,
   };
 }
